@@ -599,6 +599,11 @@ DELETE FROM edu_forum_read WHERE userid = '324' AND forumid IN (SELECT f.id FROM
 		return $this->_mysqli->getRecordId('groups', array('courseid' => $courseId, 'name' => ['%'.$groupName.'%', 'LIKE']), 'id');
 	}
 
+    // user/group/getByName
+    public function groupGetByIdnumber($courseId, $groupName) {
+        return $this->_mysqli->getRecordId('groups', array('courseid' => $courseId, 'idnumber' => ['%'.$groupName.'%', 'LIKE']), 'id');
+    }
+
 	// user/group/create
 	public function groupCreate($groupName, $courseId, $idnumber = NULL, $password = NULL, $description = '') {
 		$groupId = $this->groupGetByName($courseId, $groupName);
